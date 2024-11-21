@@ -30,7 +30,7 @@ const NewsCard = ({ news }) => {
       <img
         src={thumbnail_url}
         alt="Thumbnail"
-        className="rounded-lg mb-4 w-96 h-96"
+        className="rounded-lg mb-4 w-auto h-96"
       />
 
       <h3 className="text-lg font-bold mb-2">{title}</h3>
