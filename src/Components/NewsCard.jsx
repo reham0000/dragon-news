@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { BsEye } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
   const {
@@ -35,7 +36,7 @@ const NewsCard = ({ news }) => {
 
       <h3 className="text-lg font-bold mb-2">{title}</h3>
       <p className="text-sm text-gray-600 mb-4">
-        {details.substring(0, 100)}...
+        {details.substring(0, 100)}... <br /> <Link to={`/news/${news._id}`} className="text-blue-500">Read More</Link>
       </p>
 
       <div className="flex justify-between items-center text-sm text-gray-600">
