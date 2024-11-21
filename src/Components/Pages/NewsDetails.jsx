@@ -13,9 +13,9 @@ const NewsDetails = () => {
       <header>
         <Header></Header>
       </header>
-      <main className="w-11/12 mx-auto grid grid-cols-12 gap--5">
+      <main className="w-11/12 mx-auto grid grid-cols-12 gap-5">
         <section className="col-span-9">
-          <h2 className="font-semibold mb-3">Bu News Desk</h2>
+          <h2 className="font-semibold mb-3">BU News Desk</h2>
           <div className="card bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
               <img
