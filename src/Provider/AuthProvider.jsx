@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -20,16 +21,23 @@ const AuthProvider = ({ children }) => {
   // console.log(user);
 
   const createNewUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const userLogin = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
-  }
+  };
 
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
+
+  const updateUserProfile = (updatedData) => {
+    return updateProfile (auth.currentUser, updatedData)
+  } 
 
   const authInfo = {
     user,
@@ -38,6 +46,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     userLogin,
     loading,
+    updateUserProfile,
   };
 
   useEffect(() => {

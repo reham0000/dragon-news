@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+
+  const [error, setError] = useState({});
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,9 +22,10 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate(location?.state ? location.state : '/')
       })
-      .catch((error) => {
-        notify('Incorrect Password')
+      .catch((err) => {
+        setError({...error, login: err.code})
       });
   };
 
@@ -66,6 +72,12 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
+              {
+                error.login && (
+                  <label className="label text-sm text-red-600">
+                      {error.login}
+                  </label>
+              )}
               <label className="label">
                 <a
                   href="#"
